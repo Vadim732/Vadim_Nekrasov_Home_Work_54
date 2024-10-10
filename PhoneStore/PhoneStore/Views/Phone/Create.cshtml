@@ -7,7 +7,7 @@
 <div class="row">
     <div class="bg-dark text-center pt-5 pb-4">
         <h3 class="text-white mb-5">Fill out the form to add a new phone</h3>
-        <form asp-action="Create" method="post">
+        <form asp-action="Create" asp-controller="Phone" method="post">
             <div class="form_row mb-3">
                 <label for="" class="col-4">
                     <input type="text" class="form-control" asp-for="Name" placeholder="Specify the phone model...">
@@ -16,6 +16,11 @@
             <div class="form_row mb-3">
                 <label for="" class="col-4">
                     <input type="text" class="form-control" asp-for="Company" placeholder="Specify the manufacturing company...">
+                </label>
+            </div>
+            <div class="form_row mb-3">
+                <label for="" class="col-4">
+                    <textarea asp-for="Characteristics" type="text" class="form-control" placeholder="Specify the phone specifications..." rows="3"></textarea>
                 </label>
             </div>
             <div class="form_row mb-3">

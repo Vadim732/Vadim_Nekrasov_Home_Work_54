@@ -10,7 +10,7 @@
         <thead class="table-dark">
         <tr>
             <th>Name</th>
-            <th>Company</th>
+            <th>Brand</th>
             <th>Price</th>
             <th>Action</th>
         </tr>
@@ -23,8 +23,9 @@
                 <td>@p.Company</td>
                 <td>@p.Price</td>
                 <td>
-                    @* <a asp-action="Details" asp-controller="Phone" asp-route-animalId="@p.Id" class="btn btn-outline-dark">Details</a> *@
-                    <a asp-action="Delete" asp-controller="Phone" asp-route-animalId="@p.Id" class="btn btn-outline-danger">Delete</a>
+                    <a asp-action="Create" asp-controller="Order" asp-route-phoneId="@p.Id" class="btn btn-outline-success">Make order</a>
+                    <a asp-action="Details" asp-controller="Phone" asp-route-phoneId="@p.Id" class="btn btn-outline-dark">Details</a>
+                    <a asp-action="Delete" asp-controller="Phone" asp-route-phoneId="@p.Id" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
         }

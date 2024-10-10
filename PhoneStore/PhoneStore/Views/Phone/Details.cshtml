@@ -1,0 +1,23 @@
+﻿@model Phone
+
+@{
+    ViewBag.Title = "Detailed view of the phone";
+}
+
+<div class="bg-dark text-white pt-4 mt-5">
+    <div class="row px-5">
+        <div class="col-4 border-end border-white">
+            <h4 class="text-center mb-5">Info</h4>
+            <p><strong>Id: </strong>@Model.Id</p>
+            <p><strong>Name: </strong>@Model.Name</p>
+            <p><strong>Brand: </strong>@Model.Company</p>
+            <p><strong>Price: </strong>@Model.Price</p>
+            <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Id" class="btn btn-outline-success w-50">Make order</a></p>
+            <p class="text-center mt-2"><a asp-action="Index" asp-controller="Phone" class="btn btn-outline-light w-50">Back</a></p>
+        </div>
+        <div class="col-8 text-center">
+            <h4 class="text-center mt-5">About phone</h4>
+            <p>@Model.Characteristics</p>
+        </div>
+    </div>
+</div>

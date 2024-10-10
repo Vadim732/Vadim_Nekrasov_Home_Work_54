@@ -35,8 +35,7 @@ public class PhoneController : Controller
 
         return View(phone);
     }
-
-    [HttpPost]
+    
     public IActionResult Delete(int phoneId)
     {
         Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
@@ -47,5 +46,16 @@ public class PhoneController : Controller
         }
 
         return RedirectToAction("Index");
+    }
+    
+    public IActionResult Details(int phoneId)
+    {
+        Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
+        if (phone != null)
+        {
+            return View(phone);
+        }
+
+        return NotFound();
     }
 }
