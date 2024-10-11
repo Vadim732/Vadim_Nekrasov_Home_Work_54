@@ -1,0 +1,37 @@
+﻿@model Phone
+
+@{
+    ViewBag.Title = "Edit phone";
+}
+
+<div class="bg-dark text-center text-white pt-5 pb-4">
+    <h3 class="mb-5">Fill out the form to edit phone</h3>
+    <form asp-action="Edit" asp-controller="Phone" method="post">
+        <input type="hidden" asp-for="Id"/>
+        <div class="form_row mb-3">
+            <label for="" class="col-4">
+                <p>Phone name:</p>
+                <input type="text" class="form-control" asp-for="Name">
+            </label>
+        </div>
+        <div class="form_row mb-3">
+            <label for="" class="col-4">
+                <p>Brand:</p>
+                <input type="text" class="form-control" asp-for="Company">
+            </label>
+        </div>
+        <div class="form_row mb-3">
+            <label for="" class="col-4">
+                <p>About phone:</p>
+                <textarea asp-for="Characteristics" type="text" class="form-control" readonly rows="6"></textarea>
+            </label>
+        </div>
+        <div class="form_row mb-3">
+            <label for="" class="col-4">
+                <p>Price:</p>
+                <input type="number" class="form-control" asp-for="Price">
+            </label>
+        </div>
+        <button type="submit" class="btn btn-outline-light mb-3 w-25">Save</button>
+    </form>
+</div>

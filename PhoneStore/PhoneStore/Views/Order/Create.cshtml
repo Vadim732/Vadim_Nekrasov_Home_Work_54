@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="bg-dark text-center pt-5 pb-4">
-        <h3 class="text-white mb-5">Fill out the form to place an order for the @Model.Phone.Name</h3>
+        <h3 class="text-white mb-5">Fill out the form to place an order for the <span class="text-success">@Model.Phone.Name</span></h3>
         <form asp-action="Create" asp-controller="Order" method="post">
             <div class="form_row mb-3">
                 <label for="" class="col-4">
@@ -26,6 +26,11 @@
             <div class="form_row mb-3">
                 <label for="" class="col-4">
                     <input type="text" class="form-control" asp-for="ContactPhone" placeholder="Specify your phone number...">
+                </label>
+            </div>
+            <div class="form_row mb-3">
+                <label for="" class="col-4">
+                    <input disabled type="text" class="form-control" value="@Model.Phone.Name">
                 </label>
                 <input asp-for="PhoneId" type="hidden" value="@Model.Phone.Id" />
             </div>
