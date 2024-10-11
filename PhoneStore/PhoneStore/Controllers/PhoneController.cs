@@ -78,4 +78,11 @@ public class PhoneController : Controller
 
         return RedirectToAction("Index");
     }
+
+    public IActionResult Brand(string phoneCompany)
+    {
+        Phone phone = _context.Phones.FirstOrDefault(p => p.Company == phoneCompany);
+        string urlCompany = $"https://www.{phone.Company}.com";
+        return Redirect(urlCompany);
+    }
 }
