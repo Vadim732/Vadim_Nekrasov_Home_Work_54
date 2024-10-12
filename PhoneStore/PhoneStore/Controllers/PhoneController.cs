@@ -82,7 +82,28 @@ public class PhoneController : Controller
     public IActionResult Brand(string phoneCompany)
     {
         Phone phone = _context.Phones.FirstOrDefault(p => p.Company == phoneCompany);
-        string urlCompany = $"https://www.{phone.Company}.com";
-        return Redirect(urlCompany);
+        if (phone != null)
+        {
+            string urlCompany = $"https://www.{phone.Company}.com";
+            return Redirect(urlCompany);
+        }
+
+        return NotFound();
+    }
+
+    public IActionResult Download(int phoneId)
+    {
+        Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
+        if (phone != null)
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "PhoneInfo", $"{phone.Company}.text");
+            if (System.IO.File.Exists(path))
+            {
+                return PhysicalFile(path, "text/plain", $"{phone.Company}.txt");
+            }
+            return NotFound();
+        }
+        
+        return NotFound();
     }
 }
