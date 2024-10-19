@@ -18,8 +18,11 @@
             <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Id" class="btn btn-outline-light w-50">Download info</a></p>
         </div>
         <div class="col-8 text-center">
-            <h4 class="text-center mt-5">About phone</h4>
-            <p>@Model.Characteristics</p>
+            <img src="@Model.Image" class="img-fluid" alt="Phone image">
         </div>
+    </div>
+    <div class="border-top border-white">
+        <h4 class="text-center mt-2">About phone</h4>
+        <p class="ml-mr-2 mt-1">@Model.Characteristics</p>
     </div>
 </div>
