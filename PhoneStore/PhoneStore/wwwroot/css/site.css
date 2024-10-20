@@ -26,3 +26,11 @@ body {
   margin-right: 2em;
   padding-bottom: 2.4em;
 }
+
+.size-20 {
+  font-size: 1.3rem;
+}
+
+.ml-06 {
+  margin-left: 0.6em;
+}

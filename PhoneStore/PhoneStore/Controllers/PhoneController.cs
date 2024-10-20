@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneStore.Models;
 using PhoneStore.Services;
+using PhoneStore.ViewModels;
 
 namespace PhoneStore.Controllers;
 
@@ -56,7 +57,12 @@ public class PhoneController : Controller
         Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
         if (phone != null)
         {
-            return View(phone);
+            var pvm = new PhoneCurrenciesViewModel
+            {
+                Phone = phone,
+                CurrencyRatesList = _currencyRates
+            };
+            return View(pvm);
         }
 
         return NotFound();

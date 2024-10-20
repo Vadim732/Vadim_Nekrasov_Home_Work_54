@@ -21,7 +21,7 @@
             <tr>
                 <td>@p.Name</td>
                 <td>@p.Company</td>
-                <td>@p.Price</td>
+                <td>@p.Price $</td>
                 <td>
                     <a asp-action="Create" asp-controller="Order" asp-route-phoneId="@p.Id" class="btn btn-outline-success">Make order</a>
                     <a asp-action="Details" asp-controller="Phone" asp-route-phoneId="@p.Id" class="btn btn-outline-dark">Details</a>

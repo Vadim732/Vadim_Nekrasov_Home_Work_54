@@ -1,4 +1,4 @@
-﻿@model Phone
+﻿@model PhoneStore.ViewModels.PhoneCurrenciesViewModel
 
 @{
     ViewBag.Title = "Detailed view of the phone";
@@ -7,22 +7,29 @@
 <div class="bg-dark text-white pt-4 mt-5">
     <div class="row px-5">
         <div class="col-4 border-end border-white">
-            <h4 class="text-center mb-5">Info</h4>
-            <p><strong>Id: </strong>@Model.Id</p>
-            <p><strong>Name: </strong>@Model.Name</p>
-            <p><strong>Brand: </strong>@Model.Company</p>
-            <p><strong>Price: </strong>@Model.Price</p>
-            <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Id" class="btn btn-outline-success w-50">Make order</a></p>
+            <h4 class="text-center mb-2">Info</h4>
+            <p><strong>Id: </strong>@Model.Phone.Id</p>
+            <p><strong>Name: </strong>@Model.Phone.Name</p>
+            <p><strong>Brand: </strong>@Model.Phone.Company</p>
+            <p><strong>Price: </strong>@Model.Phone.Price <span class="text-secondary ml-06">USD</span></p>
+            <p class="mt-2 border-top border-white text-center size-20"><strong>Price in other currencies</strong></p>
+            <div class="mb-1 border-bottom border-white">
+                @foreach (var c in Model.CurrencyRatesList)
+                {
+                    <p><strong>@c.CurrencyName: </strong> @(Model.Phone.Price * c.CurrencyRate) <span class="text-secondary ml-06">@c.CurrencyCode</span></p>
+                }
+            </div>
+            <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-success w-50">Make order</a></p>
             <p class="text-center mt-2"><a asp-action="Index" asp-controller="Phone" class="btn btn-outline-light w-50">To main page</a></p>
-            <p class="text-center mt-2"><a asp-action="Brand" asp-controller="Phone" asp-route-phoneCompany="@Model.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
-            <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Id" class="btn btn-outline-light w-50">Download info</a></p>
+            <p class="text-center mt-2"><a asp-action="Brand" asp-controller="Phone" asp-route-phoneCompany="@Model.Phone.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
+            <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-light w-50">Download info</a></p>
         </div>
         <div class="col-8 text-center">
-            <img src="@Model.Image" class="img-fluid" alt="Phone image">
+            <img src="@Model.Phone.Image" class="img-fluid" alt="Phone image">
         </div>
     </div>
     <div class="border-top border-white">
         <h4 class="text-center mt-2">About phone</h4>
-        <p class="ml-mr-2 mt-1">@Model.Characteristics</p>
+        <p class="ml-mr-2 mt-1">@Model.Phone.Characteristics</p>
     </div>
 </div>
