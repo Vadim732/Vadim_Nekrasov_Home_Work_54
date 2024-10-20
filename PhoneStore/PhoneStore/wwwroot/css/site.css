@@ -34,3 +34,9 @@ body {
 .ml-06 {
   margin-left: 0.6em;
 }
+
+.img-border {
+  max-width: 90%;
+  margin: 5% auto;
+  border: 1px solid whitesmoke;
+}

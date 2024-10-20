@@ -16,16 +16,16 @@
             <div class="mb-1 border-bottom border-white">
                 @foreach (var c in Model.CurrencyRatesList)
                 {
-                    <p><strong>@c.CurrencyName: </strong> @(Model.Phone.Price * c.CurrencyRate) <span class="text-secondary ml-06">@c.CurrencyCode</span></p>
+                    <p><strong>@c.CurrencyName: </strong>@(Model.Phone.Price * c.CurrencyRate) <span class="text-secondary ml-06">@c.CurrencyCode</span></p>
                 }
             </div>
-            <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-success w-50">Make order</a></p>
+            <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Phone.Id" class="btn btn-success w-50">Make order</a></p>
             <p class="text-center mt-2"><a asp-action="Index" asp-controller="Phone" class="btn btn-outline-light w-50">To main page</a></p>
             <p class="text-center mt-2"><a asp-action="Brand" asp-controller="Phone" asp-route-phoneCompany="@Model.Phone.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
             <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-light w-50">Download info</a></p>
         </div>
         <div class="col-8 text-center">
-            <img src="@Model.Phone.Image" class="img-fluid" alt="Phone image">
+            <img src="@Model.Phone.Image" class="img-fluid img-border" alt="Phone image">
         </div>
     </div>
     <div class="border-top border-white">
