@@ -1,0 +1,22 @@
+[
+  {
+    "CurrencyCode": "RUB",
+    "CurrencyName": "Ruble",
+    "CurrencyRate": 95.8
+  },
+  {
+    "CurrencyCode": "KGS",
+    "CurrencyName": "Som",
+    "CurrencyRate": 85.3
+  },
+  {
+    "CurrencyCode": "EUR",
+    "CurrencyName": "Euro",
+    "CurrencyRate": 0.92
+  },
+  {
+    "CurrencyCode": "KZT",
+    "CurrencyName": "Tenge",
+    "CurrencyRate": 481.67
+  }
+]

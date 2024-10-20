@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneStore.Models;
+using PhoneStore.Services;
 
 namespace PhoneStore.Controllers;
 
 public class PhoneController : Controller
 {
     private readonly PhoneStoreContext _context;
-
-    public PhoneController(PhoneStoreContext context)
+    private readonly List<CurrencyRates> _currencyRates;
+    
+    public PhoneController(PhoneStoreContext context, List<CurrencyRates> currencyRates)
     {
         _context = context;
+        _currencyRates = currencyRates;
     }
     
     public IActionResult Index()
@@ -96,10 +99,10 @@ public class PhoneController : Controller
         Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
         if (phone != null)
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "PhoneInfo", $"{phone.Company}.text");
-            if (System.IO.File.Exists(path))
+            string pathPhoneInfo = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "PhoneInfo", $"{phone.Company}.text");
+            if (System.IO.File.Exists(pathPhoneInfo))
             {
-                return PhysicalFile(path, "text/plain", $"{phone.Company}.txt");
+                return PhysicalFile(pathPhoneInfo, "text/plain", $"{phone.Company}.txt");
             }
             return NotFound();
         }
