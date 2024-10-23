@@ -13,7 +13,6 @@
             <th>Email</th>
             <th>Date of foundation</th>
             <th>Action</th>
-            <th><a asp-action="Create" asp-controller="Brand" class="btn btn-outline-light">Add new brand</a></th>
         </tr>
         </thead>
         <tbody>
@@ -22,9 +21,10 @@
             <tr>
                 <td>@b.Name</td>
                 <td>@b.Email</td>
-                <td>@b.DateFoundation</td>
+                <td>@b.DateFoundation.ToString("dd, MMMM, yyyy")</td>
                 <td>
                     <a asp-action="Delete" asp-controller="Brand" asp-route-brandId="@b.Id" class="btn btn-outline-danger">Delete</a>
+                    <a asp-action="Edit" asp-controller="Brand" asp-route-brandId="@b.Id" class="btn btn-outline-dark">Edit</a>
                 </td>
             </tr>
         }

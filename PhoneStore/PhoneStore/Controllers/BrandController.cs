@@ -48,6 +48,29 @@ public class BrandController : Controller
         return RedirectToAction("Index");
     }
     
+    public IActionResult Edit(int brandId)
+    {
+        Brand brand = _context.Brands.FirstOrDefault(b => b.Id == brandId);
+        if (brand != null)
+        {
+            return View(brand);
+        }
+
+        return NotFound();
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Brand brand)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Update(brand);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        return View(brand);
+    }
+    
     public bool CheckName(string name)
     {
         var brand = _context.Brands.FirstOrDefault(b => b.Name.ToLower() == name.ToLower());
