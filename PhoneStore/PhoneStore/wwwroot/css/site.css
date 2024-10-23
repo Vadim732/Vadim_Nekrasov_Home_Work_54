@@ -40,3 +40,7 @@ body {
   margin: 5% auto;
   border: 1px solid whitesmoke;
 }
+
+.text-error {
+  color: #ff1c1c;
+}

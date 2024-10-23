@@ -26,7 +26,7 @@ public class BrandController : Controller
     [HttpPost]
     public IActionResult Create(Brand brand)
     {
-        if (brand != null)
+        if (ModelState.IsValid)
         {
             _context.Add(brand);
             _context.SaveChanges();
@@ -46,5 +46,24 @@ public class BrandController : Controller
         }
 
         return RedirectToAction("Index");
+    }
+    
+    public bool CheckName(string name)
+    {
+        var brand = _context.Brands.FirstOrDefault(b => b.Name.ToLower() == name.ToLower());
+        return brand == null;
+    }
+
+    public bool CheckDate(DateTime dateFoundation)
+    {
+        DateTime today = DateTime.Today;
+        DateTime hundredYearsAgo = today.AddYears(-100);
+        
+        if (dateFoundation > today || dateFoundation < hundredYearsAgo)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
