@@ -16,8 +16,16 @@
         </div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
-                <p>Brand:</p>
+                <p>Company:</p>
                 <input type="text" class="form-control" asp-for="Company">
+            </label>
+        </div>
+        <div class="form_row mb-3">
+            <label for="brand" class="col-4">
+                <p>Brand:</p>
+                <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands">
+                    <option value="">Select a brand...</option>
+                </select>
             </label>
         </div>
         <div class="form_row mb-3">

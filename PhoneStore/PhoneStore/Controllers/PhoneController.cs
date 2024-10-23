@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using PhoneStore.Models;
 using PhoneStore.Services;
 using PhoneStore.ViewModels;
@@ -18,12 +20,13 @@ public class PhoneController : Controller
     
     public IActionResult Index()
     {
-        List<Phone> phones = _context.Phones.ToList();
+        List<Phone> phones = _context.Phones.Include(p => p.Brand).ToList();
         return View(phones);
     }
 
     public IActionResult Create()
     {
+        ViewBag.Brands = new SelectList(_context.Brands.ToList(), "Id", "Name");
         return View();
     }
 
@@ -54,7 +57,7 @@ public class PhoneController : Controller
     
     public IActionResult Details(int phoneId)
     {
-        Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
+        Phone phone = _context.Phones.Include(p => p.Brand).FirstOrDefault(p => p.Id == phoneId);
         if (phone != null)
         {
             var pvm = new PhoneCurrenciesViewModel
@@ -70,7 +73,8 @@ public class PhoneController : Controller
 
     public IActionResult Edit(int phoneId)
     {
-        Phone phone = _context.Phones.FirstOrDefault(p => p.Id == phoneId);
+        Phone phone = _context.Phones.Include(p => p.Brand).FirstOrDefault(p => p.Id == phoneId);
+        ViewBag.Brands = new SelectList(_context.Brands.ToList(), "Id", "Name");
         if (phone != null)
         {
             return View(phone);
@@ -88,7 +92,7 @@ public class PhoneController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Brand(string phoneCompany)
+    public IActionResult Company(string phoneCompany)
     {
         Phone phone = _context.Phones.FirstOrDefault(p => p.Company == phoneCompany);
         if (phone != null)

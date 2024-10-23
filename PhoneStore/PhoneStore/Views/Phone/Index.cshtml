@@ -10,6 +10,7 @@
         <thead class="table-dark">
         <tr>
             <th>Name</th>
+            <th>Company</th>
             <th>Brand</th>
             <th>Price</th>
             <th>Action</th>
@@ -21,6 +22,7 @@
             <tr>
                 <td>@p.Name</td>
                 <td>@p.Company</td>
+                <td>@p.Brand.Name</td>
                 <td>@p.Price $</td>
                 <td>
                     <a asp-action="Create" asp-controller="Order" asp-route-phoneId="@p.Id" class="btn btn-outline-success">Make order</a>

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PhoneStore.Models;
 
@@ -10,9 +11,11 @@ using PhoneStore.Models;
 namespace PhoneStore.Migrations
 {
     [DbContext(typeof(PhoneStoreContext))]
-    partial class PhoneStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20241023053050_addNewBrandModel")]
+    partial class addNewBrandModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -77,9 +80,6 @@ namespace PhoneStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Characteristics")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -101,8 +101,6 @@ namespace PhoneStore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId");
-
                     b.ToTable("Phones");
                 });
 
@@ -115,17 +113,6 @@ namespace PhoneStore.Migrations
                         .IsRequired();
 
                     b.Navigation("Phone");
-                });
-
-            modelBuilder.Entity("PhoneStore.Models.Phone", b =>
-                {
-                    b.HasOne("PhoneStore.Models.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
                 });
 #pragma warning restore 612, 618
         }

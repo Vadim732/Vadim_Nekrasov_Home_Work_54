@@ -10,7 +10,8 @@
             <h4 class="text-center mb-2">Info</h4>
             <p><strong>Id: </strong>@Model.Phone.Id</p>
             <p><strong>Name: </strong>@Model.Phone.Name</p>
-            <p><strong>Brand: </strong>@Model.Phone.Company</p>
+            <p><strong>Brand: </strong>@Model.Phone.Brand.Name</p>
+            <p><strong>Company: </strong>@Model.Phone.Company</p>
             <p><strong>Price: </strong>@Model.Phone.Price <span class="text-secondary ml-06">USD</span></p>
             <p class="mt-2 border-top border-white text-center size-20"><strong>Price in other currencies</strong></p>
             <div class="mb-1 border-bottom border-white">
@@ -21,7 +22,7 @@
             </div>
             <p class="text-center mt-3"><a asp-action="Create" asp-controller="Order" asp-route-phoneId="@Model.Phone.Id" class="btn btn-success w-50">Make order</a></p>
             <p class="text-center mt-2"><a asp-action="Index" asp-controller="Phone" class="btn btn-outline-light w-50">To main page</a></p>
-            <p class="text-center mt-2"><a asp-action="Brand" asp-controller="Phone" asp-route-phoneCompany="@Model.Phone.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
+            <p class="text-center mt-2"><a asp-action="Company" asp-controller="Phone" asp-route-phoneCompany="@Model.Phone.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
             <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-light w-50">Download info</a></p>
         </div>
         <div class="col-8 text-center">

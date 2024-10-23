@@ -8,4 +8,7 @@ public class Phone
     public string Characteristics { get; set; }
     public string Image { get; set; }
     public int Price { get; set; }
+    
+    public int BrandId { get; set; }
+    public Brand Brand { get; set; }
 }
