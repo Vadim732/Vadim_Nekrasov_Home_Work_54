@@ -58,12 +58,21 @@ public class PhoneController : Controller
     public IActionResult Details(int phoneId)
     {
         Phone phone = _context.Phones.Include(p => p.Brand).FirstOrDefault(p => p.Id == phoneId);
+        var reviews = _context.Reviews.Where(r => r.PhoneId == phoneId).ToList();
         if (phone != null)
         {
+            double? averageGrade = null;
+            if (reviews.Any())
+            {
+                averageGrade = reviews.Average(r => r.Grade);
+            }
+            
             var pvm = new PhoneCurrenciesViewModel
             {
                 Phone = phone,
-                CurrencyRatesList = _currencyRates
+                CurrencyRatesList = _currencyRates,
+                Reviews = reviews,
+                AverageGrade = averageGrade
             };
             return View(pvm);
         }

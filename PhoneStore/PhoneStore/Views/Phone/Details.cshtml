@@ -24,6 +24,7 @@
             <p class="text-center mt-2"><a asp-action="Index" asp-controller="Phone" class="btn btn-outline-light w-50">To main page</a></p>
             <p class="text-center mt-2"><a asp-action="Company" asp-controller="Phone" asp-route-phoneCompany="@Model.Phone.Company" class="btn btn-outline-light w-50">Manufacturer</a></p>
             <p class="text-center mt-2"><a asp-action="Download" asp-controller="Phone" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-light w-50">Download info</a></p>
+            <p class="text-center mt-2"><a asp-action="Create" asp-controller="Review" asp-route-phoneId="@Model.Phone.Id" class="btn btn-outline-light w-50">Add review</a></p>
         </div>
         <div class="col-8 text-center">
             <img src="@Model.Phone.Image" class="img-fluid img-border" alt="Phone image">
@@ -32,5 +33,30 @@
     <div class="border-top border-white">
         <h4 class="text-center mt-2">About phone</h4>
         <p class="ml-mr-2 mt-1">@Model.Phone.Characteristics</p>
+    </div>
+    <div class="border-top border-white">
+        <div class="text-center mt-2 mb-4">
+            <h4>Reviews on the phone</h4>
+            @if (Model.AverageGrade.HasValue)
+            {
+                <p class="text-center text-grey">Average Rating: <span class="text-warning">@Model.AverageGrade.Value.ToString("0.0")/5</span></p>
+            }
+        </div>
+        @if (Model.Reviews.Any())
+        {
+            <ul class="list-group mt-3">
+                @foreach (var review in Model.Reviews)
+                {
+                    <li class="list-group-item bg-dark text-white">
+                        <strong>@review.Name</strong> - <span class="text-warning">@review.Grade/5</span>
+                        <p class="text-grey">@review.Message</p>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-center mt-3">No reviews yet :с</p>
+        }
     </div>
 </div>

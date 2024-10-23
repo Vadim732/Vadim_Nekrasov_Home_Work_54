@@ -21,7 +21,7 @@ public class Phone
     [Range(45, 10000, ErrorMessage = "Price must be between 45$ and 10,000$!")]
     public int Price { get; set; }
     
-    public int BrandId { get; set; }
     [Required]
-    public Brand Brand { get; set; }
+    public int? BrandId { get; set; }
+    public Brand? Brand { get; set; }
 }
