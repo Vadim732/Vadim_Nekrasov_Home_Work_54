@@ -36,7 +36,7 @@ namespace PhoneStore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("PhoneStore.Models.Order", b =>
@@ -68,7 +68,7 @@ namespace PhoneStore.Migrations
 
                     b.HasIndex("PhoneId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("PhoneStore.Models.Phone", b =>
@@ -103,7 +103,7 @@ namespace PhoneStore.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Phones");
+                    b.ToTable("Phones", (string)null);
                 });
 
             modelBuilder.Entity("PhoneStore.Models.Order", b =>

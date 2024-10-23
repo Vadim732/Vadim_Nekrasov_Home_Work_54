@@ -8,16 +8,19 @@
     <h3 class="mb-5">Fill out the form to edit phone</h3>
     <form asp-action="Edit" asp-controller="Phone" method="post">
         <input type="hidden" asp-for="Id"/>
+        <div asp-validation-summary="ModelOnly"></div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
                 <p>Phone name:</p>
                 <input type="text" class="form-control" asp-for="Name">
+                <span asp-validation-for="Name" class="text-error"/>
             </label>
         </div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
                 <p>Company:</p>
                 <input type="text" class="form-control" asp-for="Company">
+                <span asp-validation-for="Company" class="text-error"/>
             </label>
         </div>
         <div class="form_row mb-3">
@@ -26,26 +29,34 @@
                 <select asp-for="BrandId" class="form-control" asp-items="ViewBag.Brands">
                     <option value="">Select a brand...</option>
                 </select>
+                <span asp-validation-for="BrandId" class="text-error"/>
             </label>
         </div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
                 <p>About phone:</p>
                 <textarea asp-for="Characteristics" type="text" class="form-control" rows="6"></textarea>
+                <span asp-validation-for="Characteristics" class="text-error"/>
             </label>
         </div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
                 <p>Link to phone image:</p>
                 <input type="text" class="form-control" asp-for="Image">
+                <span asp-validation-for="Image" class="text-error"/>
             </label>
         </div>
         <div class="form_row mb-3">
             <label for="" class="col-4">
                 <p>Price:</p>
                 <input type="number" class="form-control" asp-for="Price">
+                <span asp-validation-for="Price" class="text-error"/>
             </label>
         </div>
         <button type="submit" class="btn btn-outline-light mb-3 w-25">Save</button>
     </form>
 </div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

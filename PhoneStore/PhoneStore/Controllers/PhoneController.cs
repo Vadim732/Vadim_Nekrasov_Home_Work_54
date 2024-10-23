@@ -31,15 +31,15 @@ public class PhoneController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Phone? phone)
+    public IActionResult Create(Phone phone)
     {
-        if (phone != null)
+        if (ModelState.IsValid)
         {
             _context.Add(phone);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        
         return View(phone);
     }
     
@@ -86,10 +86,16 @@ public class PhoneController : Controller
     [HttpPost]
     public IActionResult Edit(Phone phone)
     {
-        _context.Update(phone);
-        _context.SaveChanges();
+        if (ModelState.IsValid)
+        {
+            ViewBag.Brands = new SelectList(_context.Brands.ToList(), "Id", "Name");
+            _context.Update(phone);
+            _context.SaveChanges();
 
-        return RedirectToAction("Index");
+            return RedirectToAction("Index");
+        }
+        
+        return View(phone);
     }
 
     public IActionResult Company(string phoneCompany)
